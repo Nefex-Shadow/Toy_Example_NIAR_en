@@ -146,7 +146,6 @@ No new versions will be created.
 <!-- scope: telescope -->
 <!-- info: Select **one**: -->
 - Time Series
-- Forecasting
 
 #### Data Fields
 <!-- scope: microscope -->
@@ -300,11 +299,6 @@ J_missing_diag_sec_share_lag0 | Val | Ratio of cases missing a secondary diagnos
 J_missing_proc_share_lag0 | Val | Ratio of cases missing information on performed procedure (current month)
 
 **Above:** Values of last data point
-
-#### Primary Data Modality
-<!-- scope: telescope -->
-<!-- info: Select **one**: -->
-- Time Series
 
 ## Motivations & Intentions
 

@@ -167,9 +167,12 @@ while year < 2025 or month < 12:
                 val_ma6,  # J_count_ma6_lag1
                 val_ma12,  # J_count_ma12_lag1
                 val[9] - val[38],  # J_growth_1m_lag1
-                hos_df.J_count.values[0],  # J_count
             ]
         )
+
+        current_df = get_df_month_year(year, month, hos_df)
+        val.extend(get_feat_group1(current_df))
+        val.extend(get_feat_group2(current_df))
 
         data_final.append(val)
 
@@ -295,6 +298,34 @@ df_final = pd.DataFrame(
         "J_count_ma12_lag1",
         "J_growth_1m",
         "J_count",
+        "J00_06_share_lag0",
+        "J09_18_share_lag0",
+        "J20_22_share_lag0",
+        "J40_47_share_lag0",
+        "J_bucket_entropy_lag0",
+        "J_death_share_lag0",
+        "J_days_in_mean_lag0",
+        "J_days_in_p90_lag0",
+        "J_uti_share_lag0",
+        "J_uti_days_mean_lag0",
+        "J_val_tot_mean_lag0",
+        "J_val_tot_p90_lag0",
+        "J_val_uti_share_lag0",
+        "J_sex_m_share_lag0",
+        "J_sex_f_share_lag0",
+        "J_age_60p_share_lag0",
+        "J_age_15_59_share_lag0",
+        "J_age_0_14_share_lag0",
+        "J_race_white_share_lag0",
+        "J_race_black_share_lag0",
+        "J_race_others_share_lag0",
+        "J_missing_race_share_lag0",
+        "catchment_munic_unique_lag0",
+        "catchment_top1_share_lag0",
+        "catchment_entropy_lag0",
+        "catchment_outside_local_share_lag0",
+        "J_missing_diag_sec_share_lag0",
+        "J_missing_proc_share_lag0",
     ],
 )
 

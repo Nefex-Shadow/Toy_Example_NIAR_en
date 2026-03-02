@@ -17,7 +17,7 @@ de regressão linear usado.
 
   Segue-se os resultados obtidos. A explicação se encontra logo em seguida.
 
-![Explicação local do dado 0](./Imagens/waterfall0.png "Explicação local do dado 0")
+![Explicação local do dado 0](./Images/waterfall0.png "Explicação local do dado 0")
 
 - Esse gráfico apresenta os 9 atributos mais impactantes, e seus respectivos
 valores, para um dado específico (nesse caso, o primeiro dado do dataset de
@@ -34,9 +34,9 @@ com valor 37 - aumenta o valor base em 0.23.
 - Para esse caso, notou-se que os atributos referentes ao grupos de idade alteraram
 bastante o resultado, além da média dos 12 meses passados, a qual foi a mais impactante.
 
-![Explicação local do dado 5](./Imagens/waterfall5.png "Explicação local do dado 5")
-![Explicação local do dado 100](./Imagens/waterfall100.png "Explicação local do dado 100")
-![Explicação local do dado 9038](./Imagens/waterfall9038.png "Explicação local do dado 9038")
+![Explicação local do dado 5](./Images/waterfall5.png "Explicação local do dado 5")
+![Explicação local do dado 100](./Images/waterfall100.png "Explicação local do dado 100")
+![Explicação local do dado 9038](./Images/waterfall9038.png "Explicação local do dado 9038")
 
 - Observando o comportamento dos atributos em outros dados, nota-se que
 os atributos afetam muito o resultado dependendo de seu valor. Por exemplo,
@@ -67,24 +67,7 @@ central, 1.5+), enquanto valores baixos (pontos azuis) alteram negativamente
 - Esse gráfico revela que, além dos atributos sobre idade, atributos sobre
 raça também impactam o modelo bastante, assim como o porte do hospital.
 
-## 4: Análise regional
-
-- Acompanhando a análise de justiça do modelo, foi feito uma análise por região,
-verificando como os atributos se comportavam dado uma região.
-- Devido à quantidade de resultados, será apresentado apenas 3 gráficos
-(AC, AL, MG, respectivamente) obtidos, que serviram de exemplificação das
-conclusões obtidas.
-
-![Explicação regional AC](./Imagens/ac.png "Explicação regional de AC")
-![Explicação regional AL](./Imagens/al.png "Explicação regional de AL")
-![Explicação regional MG](./Imagens/mg.png "Explicação regional de MG")
-
-- Notou-se que as regiões apresentavam comportamento igual quanto aos atributos
-que mais impactam ("J_count_ma12_lag1", "hospital_porte" e "J_count_lag12"),
-assim como quais direções esses atributos impactam. No entanto, há uma diferença
-quanto à escala (observe os valores no eixo x).
-
-## 5: Conclusão
+## 4: Conclusão
 
 - A partir das observações retiradas, nota-se que para o modelo, as informações
 mais importantes são o tipo do hospital, a quantidade de pessoas de diferentes

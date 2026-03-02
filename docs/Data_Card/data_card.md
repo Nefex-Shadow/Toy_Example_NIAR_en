@@ -5,17 +5,11 @@ and months. Used in forecasting models for predicting hospitalizations based
 on aggregated data from previous months.
 
 #### Dataset Link
-<!-- info: Provide a link to the dataset: -->
-<!-- width: half -->
+
 <https://github.com/Nefex-Shadow/Toy_Example_NIAR_en/blob/main/SIH_Data/Final_Table.zip>
 
 #### Data Card Author(s)
-<!-- info: Select **one role per** Data Card Author:
 
-(Usage Note: Select the most appropriate choice to describe the author's role
-in creating the Data Card.) -->
-<!-- width: half -->
-- **Luís Eduardo Limas Brito, NIAR:** Owner
 - **Italo Rodrigues de Matos Avelar, NIAR:** Contributor
 - **Ramon B. H. B.:** Manager
 
@@ -24,27 +18,21 @@ in creating the Data Card.) -->
 ### Publishers
 
 #### Publishing Organization(s)
-<!-- scope: telescope -->
-<!-- info: Provide the names of the institution or organization responsible
-for publishing the dataset: -->
+
 NIAR, UFMG
 
 #### Industry Type(s)
-<!-- scope: periscope -->
-<!-- info: Select **all applicable** industry types to which the publishing
-organizations belong: -->
+
 - Academic - Tech
 
 ### Dataset Owners
 
 #### Team(s)
-<!-- scope: telescope -->
-<!-- info: Provide the names of the groups or team(s) that own the dataset: -->
+
 - NIAR, UFMG
 
 #### Contact Detail(s)
-<!-- scope: periscope -->
-<!-- info: Provide pathways to contact dataset owners: -->
+
 - **Dataset Owner(s):** Luís Eduardo Limas Brito
 - **Affiliation:** NIAR, UFMG
 - **Contact:** <lelimasbrito@gmail.com>
@@ -52,18 +40,14 @@ organizations belong: -->
 ## Dataset Overview
 
 #### Data Subject(s)
-<!-- scope: telescope -->
-<!-- info: Select ***all applicable**** subjects contained the dataset: -->
+
 - Sensitive Data about people
 - Non-Sensitive Data about people
 - Data about places and objects
 - Data about monthly happenings
 
 #### Dataset Snapshot
-<!-- scope: periscope -->
-<!-- info: Provide a snapshot of the dataset:<br><br>(Use the additional notes
-to include relevant information, considerations, and links to table(s) with
-more detailed breakdowns.) -->
+
 Category | Data
 --- | ---
 Size of Dataset | 128.6 MB
@@ -79,8 +63,6 @@ Human Labels | 4
 calculated based on monthly average of each hospital.
 
 #### Content Description
-<!-- scope: microscope -->
-<!-- info: Provide a short description of the content in a data point: -->
 
 Each data point holds an hospital accumulated statistics for a
 given month and past months. Some statistics include total hospitalizations,
@@ -89,23 +71,18 @@ presence of different age, sex and race groups and total deaths.
 ### Sensitivity of Data
 
 #### Sensitivity Type(s)
-<!-- scope: telescope -->
-<!-- info: Select ***all applicable*** data types present in the dataset: -->
+
 - User Content
 - User Metadata
 - User Activity Data
 - Health Data
 
 #### Risk Type(s)
-<!-- scope: telescope -->
-<!-- info: Select **all applicable** risk types presenting from the
-dataset: -->
+
 - Indirect Risk
 
 #### Supplemental Link(s)
-<!-- scope: periscope -->
-<!-- info: Provide link(s) for documentation pertaining to sensitive data in
-the dataset: -->
+
 **Link Name or Document Type:** <https://datasus.saude.gov.br/informacoes-de-saude-tabnet/>
 
 #### Risk(s) and Mitigation(s)
@@ -118,14 +95,12 @@ of a single person.
 ### Dataset Version and Maintenance
 
 #### Maintenance Status
-<!-- scope: telescope -->
-<!-- info: Select **one:** -->
+
 **Limited Maintenance** - The data will not be updated,
 but any technical issues will be addressed.
 
 #### Version Details
-<!-- scope: periscope -->
-<!-- info: Provide details about **this** version of the dataset: -->
+
 **Current Version:** 2.0
 
 **Last Updated:** 02/2026
@@ -133,26 +108,16 @@ but any technical issues will be addressed.
 **Release Date:** 01/2026
 
 #### Maintenance Plan
-<!-- scope: microscope -->
-<!-- info: Summarize the maintenance plan for the dataset:
 
-Use additional notes to capture any other relevant information or
-considerations. -->
 No new versions will be created.
 
 ## Example of Data Points
 
 #### Primary Data Modality
-<!-- scope: telescope -->
-<!-- info: Select **one**: -->
+
 - Time Series
 
 #### Data Fields
-<!-- scope: microscope -->
-<!-- info: List the fields in data points and their descriptions.
-
-(Usage Note: Describe each field in a data point. Optionally use this to show
-the example.) -->
 
 Field Name | Field Value | Description
 --- | --- | ---
@@ -307,22 +272,14 @@ J_missing_proc_share_lag0 | 0 | Ratio of cases missing information on performed 
 ### Motivations
 
 #### Purpose(s)
-<!-- scope: telescope -->
-<!-- info: Select **one**: -->
+
 - Education
 
 #### Domain(s) of Application
-<!-- scope: periscope -->
-<!-- info: Provide a list of key domains of application that the dataset has
-been designed for:<br><br>(Usage Note: Use comma-separated keywords.) -->
+
 `Machine Learning`, `Time-Series`
 
 #### Motivating Factor(s)
-<!-- scope: microscope -->
-<!-- info: List the primary motivations for creating or curating this dataset:
-
-(Usage Note: use this to describe the problem space and corresponding
-motivations for the dataset.) -->
 
 Dataset created for use in forecasting models, following
 IAR fairness and auditability principals.
@@ -330,28 +287,17 @@ IAR fairness and auditability principals.
 ### Intended Use
 
 #### Dataset Use(s)
-<!-- scope: telescope -->
-<!-- info: Select **one**: -->
+
 - Safe for research use
 
 #### Suitable Use Case(s)
-<!-- scope: periscope -->
-<!-- info: Summarize known suitable and intended use cases of this dataset.
 
-Use additional notes to capture any specific patterns that readers should
-look out for, or other relevant information or considerations. -->
 **Suitable Use Case:** Forecasting model.
 
 **Suitable Use Case:** Hospital disparity research.
 
-**Additional Notes:** Only hospitals inside the DataSUS system is present.
-
 #### Unsuitable Use Case(s)
-<!-- scope: microscope -->
-<!-- info: Summarize known unsuitable and unintended use cases of this dataset.
 
-Use additional notes to capture any specific patterns that readers should look
-out for, or other relevant information or considerations. -->
 **Unsuitable Use Case:** Single patient research.
 
 **Unsuitable Use Case:** Models for predicting individual cases.
@@ -359,8 +305,7 @@ out for, or other relevant information or considerations. -->
 ## Access
 
 #### Access Type
-<!-- scope: telescope -->
-<!-- info: Select **one**: -->
+
 - External - Open Access
 
 ## Provenance
@@ -368,19 +313,11 @@ out for, or other relevant information or considerations. -->
 ### Collection
 
 #### Method(s) Used
-<!-- scope: telescope -->
-<!-- info: Select **all applicable** methods used to collect data: -->
+
 - Taken from other existing datasets
 
 #### Methodology Detail(s)
-<!-- scope: periscope -->
-<!-- info: Provide a description of each collection method used.
 
-Use additional notes to capture any other relevant information or
-considerations.
-
-(Usage Note: Duplicate and complete the following for collection method
-type.) -->
 **Collection Type**
 
 **Source:** FTP connection provided by DataSUS.
@@ -400,11 +337,7 @@ type.) -->
 - Monthly
 
 #### Source Description(s)
-<!-- scope: microscope -->
-<!-- info: Provide a description of each upstream source of data.
 
-Use additional notes to capture any other relevant information or
-considerations. -->
 - All used files can be found inside
 "/dissemin/publicos/SIHSUS/200801_/Dados/" directory.
 - Only files that start with "RD" were collected.
@@ -413,20 +346,11 @@ considerations. -->
 published yet by the time collection happened.
 
 #### Collection Cadence
-<!-- scope: telescope -->
-<!-- info: Select **all applicable**: -->
+
 **Static:** Data was collected once from multiple sources.
 
 #### Data Integration
-<!-- scope: periscope -->
-<!-- info: List all fields collected from different sources, and specify if
-they were included or excluded from the dataset.
 
-Use additional notes to
-capture any other relevant information or considerations.
-
-(Usage Note: Duplicate and complete the following for each upstream
-source.) -->
 **Source**
 
 **Included Fields**
@@ -462,15 +386,7 @@ are mostly different versions of previous included fields or are completely unre
 to the purpose of this dataset.
 
 #### Data Processing
-<!-- scope: microscope -->
-<!-- info: Summarize how data from different sources or methods aggregated,
-processed, or connected.
 
-Use additional notes to capture any other
-relevant information or considerations.
-
-(Usage Note: Duplicate and complete the following for each source OR
-collection method.) -->
 **Description:** Os dados foram transformados para ".csv" e, em seguida, filtrados baseados em colunas de interesse. As colunas foram usadas para calcular valores agregados que são usados na tabela final. A tabela final, no entanto, junta os dados de um mês com valores de dados passados.
 
 **Description:** Data was first converted to ".csv" files. Then it was filtered based on columns of interest. Later, new variables were created, aggregating previous collected data. Lastly, the dataset was created by adding new columns, containing information of previous months.

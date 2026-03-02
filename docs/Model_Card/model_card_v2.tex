@@ -2,24 +2,22 @@
 \usepackage[utf8]{inputenc}
 
 
-% Esse Template é uma adaptação do modelo feito por Christian Garbin:
+% This template is an adaptation from Christian Garbin's mtemplate:
 % https://www.overleaf.com/latex/templates/model-card-template/fjmvzbbbxmwx
-% Licenciada pelo Creative Commons CC BY 4.0
+% Licensed under Creative Commons CC BY 4.0
 
-% Poucas adaptações foram feitas. Foram modificadas as disposições das tabelas,
-% traduziu-se os textos e foi retirado o texto introdutório,
-% a fim de facilitar o uso desse template.
+% Few changes were made: table formatting, and removal of the explanation section.
+% The intention behind these changes is for ease of use.
 
-% Para saber mais sobre o uso de Model Cards, segue-se o artigo que propôs essa ferramenta:
+% For more information on Model Cards, please read the following article:
 % https://arxiv.org/abs/1810.03993
 
 
-% Usado no Template
 \usepackage{setspace}
 \usepackage{subcaption}
-\usepackage{changepage} % Ajuste das margens
+\usepackage{changepage} % to adjust margins
 \usepackage[breakable]{tcolorbox}
-\usepackage{float} % Para as tabelas de tcolorbox https://tex.stackexchange.com/a/274342
+\usepackage{float} % for tables inside tcolorbox https://tex.stackexchange.com/a/274342
 \usepackage{enumitem}
 \usepackage{geometry}
 
@@ -27,14 +25,13 @@
 \begin{document}
 
 
-% Cada seção deve ser breve, em formato de lista
-% Esse template faz a formatação das listas de foma compacta para facilitar manter
-% o model card dentro da recomendação de uma a duas páginas.
+% Each section is supposed to be brief, in the form of a bullet list.
+% This environment formats the lists in each model card section in a compact format to help
+% the card fit into the recommended "one to two pages".
 \newenvironment{mcsection}[1]
     {%
         \textbf{#1}
 
-        % Redução das margens para uso melhor do espaço
         \begin{itemize}[leftmargin=*,topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex,after=\vspace{\medskipamount}]
     }
     {%
@@ -45,65 +42,66 @@
 
 \tcbset{colback=white!10!white}
 
-% Título do model card, alterar aqui
-\begin{tcolorbox}[title=\textbf{Model Card - Modelo de Teste NIAR},
+% TITLE, change here
+\begin{tcolorbox}[title=\textbf{Model Card - NIAR Toy Example},
     breakable, sharp corners, boxrule=0.7pt]
 
-% Small: reduz tamanho da fonte para uma pequena, mas legível.
+% Change to a smaller, but still legible font size.
 \small{
 
 
-\begin{mcsection}{Detalhes do Modelo}
-    \item Esse modelo (versão 2.0) foi desenvolvido por Luís Eduardo Limas Brito, 18/02/2026.
-    \item Ele foi criado a fim de apresentar um exemplo prático de implementação da checklist proposta pelo NIAR.
-    \item Modelo de Predição, com o objetivo de estimar o número de internações por doenças respiratórias (CID = J...) em um hospital para um dado mês.
-    \item Há implementação de dois modelos, a fim de comparação da qualidade dos resultados. Regressão linear (implementado usando "scikit-learn") e LightGBM (modelo criado Microsoft). Para LightGBM, devido ao uso de sementes aleatórias, decidiu-se executá-la 5 vezes e triou-se a média dos resultados avaliativos dele. As sementes usadas são, em ordem de execução: 778, 768, 758, 748, 738.
+\begin{mcsection}{Model Details}
+    \item This model was developed by Luís Eduardo Limas Brito, 27/02/2026.
+    \item Forecasting model, predicting the total hospitalizations by respiratory diseases for a given hospital and month.
+    \item For comparison purposes, 4 models were implemented: a baseline (Linear Regression, with "scikit-learn"), LightGBM (model by Microsoft), LightGBM with leakage, and LightGBM after resampling.
 \end{mcsection}
 
-\begin{mcsection}{Uso pretendido}
-    \item O modelo pode ser usado por hospitais para analisar estimativas de quantas internações podem-se esperar para o próximo mês, a fim de assistir no processo de escolha dos gastos e aquisição de recursos.
-    \item O modelo não deve ser usado para assistir casos de pacientes individualmente.
+\begin{mcsection}{Intended Use}
+    \item This model may be used by hospitals to help estimate how many hospitalizations should be expected for the following month, assisting them in other decisions derived from the prediction.
+    \item This model can not be used for assistance on individual cases (patients).
 \end{mcsection}
 
-\begin{mcsection}{Fatores}
-    \item Devido à quantidade de atributos, é provável que o usuário não terá acesso a todos os dados necessários. Por isso, a ausência de alguns (valores nulos) podem afetar o resultado obtido.
-    \item Durante o processamento dos dados, foram retirados hospitais com poucos casos (vide Data Card), a fim de evitar instabilidades no modelo. Assim, o modelo não é recomendado para uso com hospitais com baixa quantidade de internações.
-    \item O estudo de justiça revelou que fatores sociais podem levemente afetar o resultado recebido, baseado na quantidade relativa de pessoas de diferentes sexos, idades e etnias. Pelo outro lado, diferentes regiões apresentaram alta disparidade na qualidade de resultados. Segue-se um gráfico ilustrando as diferenças na seção \textit{Análise Quantitativa}
+\begin{mcsection}{Factors}
+    \item During data processing, hospitals with low monthly average for hospitalizations were filtered out. Therefore, this model is not recommended for use by smaller hospitals.
 \end{mcsection}
 
 
-\begin{mcsection}{Dados de Treinamento}
-    \item O modelo foi treinado nos dados do DataSUS. Especificamente, os do tipo SIH (Internações Hospitalares), com arquivos reduzidos (começam com RD), de todos os estados, dos anos de 2022 a 2024/06.
-    \item Pré Processamento: os dados foram agrupados por hospital e mês/ano, contabilizando o total e calculando dados como média e razão de algumas colunas. Cada atributo usado para treinamento é uma defasagem temporal dos dados calculados no passo anterior (dados dos meses passados).
-    \item Hospitais com uma média mensal abaixo de 5 internações foram retiradas.
-    \item Vide \textit{data\_card.md} para informações mais detalhadas sobre o processamento e propriedades dos dados.
+\begin{mcsection}{Training Data}
+    \item All data come from DataSUS. Specifically, from 2022 to 06/2024. Used files were the reduced version (RD) from the SIH portal.
+    \item Pre-processing: all data was aggregated by hospital and month/year, calculating total counts, means, ratios and percentiles of some variables. Most data refers to information of previous months, with a few pointing to current (for leakage study).
+    \item Hospitals with a monthly average lower then 5 hospitalizations were removed for robustness.
+    \item Read \textit{data\_card.md} for more detailed information on the dataset and the pre-processing.
 \end{mcsection}
 
-\begin{mcsection}{Dados de Avaliação}
-    \item Para o LightGBM, foi usado dados para validação (dados de 2024/7 até 2024/12 do DataSUS), seguindo o mesmo pré processamento dos dados de treinamento.
-    \item Para realização de testes, foram usados os dados de 2025/01 até 2025/11 (com exceção dos estados do Acre e Roraima - "AC" e "RR" - que não estavam disponíveis ainda). Também passaram pelo mesmo processo citado acima.
+\begin{mcsection}{Evaluation Data}
+    \item For LightGBM, an extra dataset was used for validation (data from 07/2024 to 12/2024). It went through the same pre-processing as the training data.
+    \item For evaluation, data from 2025 was used, which also went through the same pre-processing. (Note: December and data from November for "AC" and "RR" were not available during development)
 \end{mcsection}
 
 \begin{mcsection}{Métricas}
-    \item Essa versão apresenta métricas por grupo em vez de métrica geral. Como as métricas de MAE e RMSE trabalham com valores absolutos, diferentes números de amostras afetam o resultado obtido.
-    \item Por esse motivo, decidiu-se usar apenas a métrica sMAPE (Erro Médio Absoluto Simétrico Percentual), uma vez que o valor é dado em percentual.
-    \item A avaliação do desempenho foi separado pelos seguintes grupos: Sexo, Idade, Raça e Região. Para cada dado, categoriza-se baseado na quantidade maior de presença de algum grupo (por exemplo, um dado com maior quantidade de mulheres é categorizado como "Feminino", na categoria Sexo), exceto região, no qual cada dado naturalmente já contém essa informação por padrão.
+    \item Mean Absolute Error (MAE): metric for overall error analysis, without penalizing any kind of error. High MAE indicates high amount of errors or large errors.
+    \item Root Mean Squared Error (RMSE): metric for overall error analysis, penalizing large errors. High RMSE indicates a high amount of larger errors.
+    \item Symetric Mean Absolute Percentage Error (SMAPE): metric for percentage based error analysis. High SMAPE indicates a higher capacity for the prediction to be further from the real value.
 \end{mcsection}
 
-\begin{mcsection}{Avisos e Recomendações}
-    \item Esse modelo foi desenvolvido somente com intuito educacional, não devendo ser aplicado em nenhum contexto real, devido à alta taxa de erro apresentada pelo modelo.
-    \item Para informações extras sobre o processo de aplicação das metodologias propostas pelo NIAR, vide os documentos presentes dentro das pastas \textit{docs} e \textit{audit}.
+\begin{mcsection}{Ethical Considerations}
+    \item A fairness study showed some disparity in prediction quality between some sensitives groups (mainly regional and hospital size). For more information, read \textit{fairness\_report.md}.
+\end{mcsection}
+
+\begin{mcsection}{Caveats and Recommendations}
+    \item This model was developed for educational purposes. It's not meant to be used in real, professional environment.
+    \item For extra, detailed information in different aspects of the Responsible AI dimension, many documents can be found in the "docs/" and "audit/" folders explaining the methods implemented in the notebook and analysing the results.
 \end{mcsection}
 
 \pagebreak
 
 \centering
-\textbf{Análise Quantitativa}
-\includegraphics[width=\linewidth]{../Justica/Imagens/idade_v2.png}
-\includegraphics[width=\linewidth]{../Justica/Imagens/raca_v2.png}
-\includegraphics[width=\linewidth]{../Justica/Imagens/sexo_v2.png}
-\includegraphics[width=\linewidth]{../Justica/Imagens/regiao_v2.png}
-
+\textbf{}
+\begin{mcsection}{Quantitative Analyses}
+    \includegraphics[width=0.3\linewidth]{../metric_Images/mae_general.png}
+    \includegraphics[width=0.3\linewidth]{../metric_Images/rmse_general.png}
+    \includegraphics[width=0.3\linewidth]{../metric_Images/smape_general.png}
+\end{mcsection}
 
 }
 \end{tcolorbox}

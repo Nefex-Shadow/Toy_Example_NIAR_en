@@ -31,18 +31,23 @@ of predictive deviation, facilitating cross-group disparity assessment.
 **Base results:**
 
 - Age:
+
 ![First evaluation based on Age](Images/age_v1.png "Evaluation by age")
 
 - Sex:
+
 ![First evaluation based on Sex](Images/sex_v1.png "Evaluation by sex")
 
 - Race:
+
 ![First evaluation based on Race](Images/race_v1.png "Evaluation by race")
 
 - Region:
+
 ![First evaluation based on Region](Images/region_v1.png "Evaluation by region")
 
 - Size:
+
 ![First evaluation based on Size](Images/size_v1.png "Evaluation by Size")
 
 ## 3: First Evaluation
@@ -132,18 +137,23 @@ during resampling.
 **Results:**
 
 - Age:
+
 ![Second evaluation based on Age](Images/age_v2.png "Evaluation by age")
 
 - Sex:
+
 ![Second evaluation based on Sex](Images/sex_v2.png "Evaluation by sex")
 
 - Race:
+
 ![Second evaluation based on Race](Images/race_v2.png "Evaluation by race")
 
 - Region:
+
 ![Second evaluation based on Region](Images/region_v2.png "Evaluation by region")
 
 - Size:
+
 ![Second evaluation based on Size](Images/size_v2.png "Evaluation by Size")
 
 **Obs:** Many attempts were done at resampling, including test with

@@ -6,12 +6,12 @@ on aggregated data from previous months.
 
 #### Dataset Link
 
-<https://github.com/Nefex-Shadow/Toy_Example_NIAR_en/blob/main/SIH_Data/Final_Table.zip>
+<[ANONYMIZED FOR PEER REVIEW]/SIH_Data/Final_Table.zip>
 
 #### Data Card Author(s)
 
-- **Italo Rodrigues de Matos Avelar, NIAR:** Contributor
-- **Ramon B. H. B.:** Manager
+- **[ANONYMIZED FOR PEER REVIEW]:** Contributor
+- **[ANONYMIZED FOR PEER REVIEW]:** Manager
 
 ## Authorship
 
@@ -19,7 +19,7 @@ on aggregated data from previous months.
 
 #### Publishing Organization(s)
 
-NIAR, UFMG
+[INSTITUTION ANONYMIZED]
 
 #### Industry Type(s)
 
@@ -29,13 +29,13 @@ NIAR, UFMG
 
 #### Team(s)
 
-- NIAR, UFMG
+- [INSTITUTION ANONYMIZED]
 
 #### Contact Detail(s)
 
-- **Dataset Owner(s):** Luís Eduardo Limas Brito
-- **Affiliation:** NIAR, UFMG
-- **Contact:** <lelimasbrito@gmail.com>
+- **Dataset Owner(s):** [ANONYMIZED FOR PEER REVIEW]
+- **Affiliation:** [INSTITUTION ANONYMIZED]
+- **Contact:** [ANONYMIZED FOR PEER REVIEW]
 
 ## Dataset Overview
 
@@ -386,8 +386,6 @@ are mostly different versions of previous included fields or are completely unre
 to the purpose of this dataset.
 
 #### Data Processing
-
-**Description:** Os dados foram transformados para ".csv" e, em seguida, filtrados baseados em colunas de interesse. As colunas foram usadas para calcular valores agregados que são usados na tabela final. A tabela final, no entanto, junta os dados de um mês com valores de dados passados.
 
 **Description:** Data was first converted to ".csv" files. Then it was filtered based on columns of interest. Later, new variables were created, aggregating previous collected data. Lastly, the dataset was created by adding new columns, containing information of previous months.
 

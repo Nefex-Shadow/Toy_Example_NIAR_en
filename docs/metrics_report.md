@@ -1,86 +1,73 @@
 # Relatório de Desempenho (métricas)
 
-## 1: Métricas escolhidas
+## 1: Metrics used
 
-- MAE (mean absolute error): Métrica básica de fácil compreensão.
-Sua função é calcular o erro total apresentado pelos modelos, penalizando
-igualmente erros acima e abaixo do valor esperado. Não há penalização
-extra para valores altos. Valores altos indicam alta quantidade de erros
-ou erros graves.
+- MAE (mean absolute error): Basic metric for simpler analysis.
+It checks the average error the of each model's prediction, punishing
+equally erros over and under the expected value. There is no extra
+punishment for large errors. Higher values indicate a big quantity of
+errors, or some large errors.
 
-- RMSE (root mean square error): Métrica intermediária para análise
-de erros graves nos modelos. Por ser exponencial, erros altos são
-severamente penalizados no cálculo. Ideal para avaliar consistência
-das respostas. Valores altos indicam alta quantidade de erros graves.
+- RMSE (root mean squared error): Intermediate metric for catching
+large errors. Since the formula uses exponencial, these errors are
+heavily punished. Ideal for consistency evaluation. Higher values
+indicate high amount of large errors.
 
-- SMAPE (symetric mean absolute percentage error): Métrica intermediária
-para análise de erros absolutos nos modelos em formato percentil. Sua
-resposta pode ser interpretada como: "o modelo erra em até X %", sendo
-X o valor retornado por essa métrica. Valores altos indicam alta taxa de erro.
+- SMAPE (symetric mean absolute percentage error): Intermediate metric
+for absolute error analysis with percentage based values. It may be
+interpreted as "the model may miss, on average, by X %", X being the SMAPE value.
+Higher values indicate higher miss rate.
 
-## 2: Resultados obtidos
+## 2: Results
+  
+Each model used (Baseline, LightGBM, LightGBM with leakage, and LightGBM post
+fairness algorithm) had it's predictions extracted and compared with the expected
+(real) value. For each metric, a graph was created presenting all models performance,
+followed by an analysis of the results and which conclusions can be made.
 
-  Para cada métrica, será apresentado os resultados junto de uma análise conjunta.
-
-**Obs:** O modelo base é uma Regressão Linear, implementada pela biblioteca sklearn.
-Além disso, os resultados foram retirados do modelo final, pós avaliação e
-implementação de algoritmos para justiça e mitigação de viés
+For more information on the models, please read *model_card.pdf*.
 
 - MAE:
-![MAE por Modelo](./metrica_Imagens/MAE.png "MAE por Modelo")
+![MAE per Model](./metric_Images/mae_general.png "MAE per Model")
 
-  Pelo resultado, percebe-se que o modelo LightGBM possui uma menor
-quantidade de erros quando comparado com o modelo base. Além disso a
-média de erro esta na casa dos 12 a 13 unidades (internações). Ou seja,
-no geral, os modelos erram 12 a 13 internações por dado.
+Overall, all LightGBM based models performed better than baseline.
+The model with leakage performed best (as expected, since it contains
+data helpful, but that shouldn't exist by the time it's trying to predict).
+At last, there is a minimal diference between LightGBM and its fairness
+counterpart.
+
+As for the values itself, a 8 to 7 mean indicates than, on average,
+the model misses by 8 to 7 hospitalizations.
 
 - RMSE:
-![RMSE por Modelo](./metrica_Imagens/RMSE.png "RMSE por Modelo")
+![RMSE per Model](./metric_Images/rmse_general.png "RMSE per Model")
 
-  Novamente o modelo LightGBM teve um desempenho melhor que o modelo
-base, dessa vez com uma grande diferença. No entanto, para ambos, nota-se
-um valor muito alto quando comparado com MAE (os quadrados de 12 e 13 são
-144 e 169, porém os resultados chegaram à 471 e 574). Tais valores indicam
-erros muito grandes para alguns casos, enquanto os valor baixo da MAE
-indica a presença de erros pequenos que "compensam" os valores mais altos.
+Again, LightGBM had a better performance than baseline, although this time
+"Fairness" LightGBM was the worst performing one.
+
+On the other hand, all models had a high RMSE (considering that MAE had 8 and 7).
+Such disparity indicates a high amount of large errors, "compensated" by smaller
+errors (hence why MAE is lower).
 
 - sMAPE:
-![sMAPE por Modelo](./metrica_Imagens/sMAPE.png "sMAPE por Modelo")
-  Finalmente, a métrica sMAPE revela o tamanho dos erros dos modelos.
-Percebe-se que o erro é grande, significando que o modelo pode errar em
-até 55% e 46% da resposta esperada (modelo base e LightGBM, respectivamente)
-Esse dado corrobora com a métrica RMSE, que revelou grande quantidade de
-erros graves. Mais uma vez, o modelo LightGBM possui melhor desempenho comparado
-ao modelo base.
+![SMAPE per Model](./metric_Images/smape_general.png "SMAPE per Model")
 
-## 3: Resultados pré Justiça
+Lastly, SMAPE shows the magnitude of error for each model. Baseline is
+the worst performing one by far, while LightGBM overall misses less.
+However, all models have a tendency to commit large mistakes: models
+are capable of missing by around 30% of the real value.
 
-  A fim de comparação posterior, segue-se os resultados obtidos dos modelos
-antes da execução dos algoritmos de justiça.
+## 3: Conclusion
 
-![MAE por Modelo pré Justiça](./metrica_Imagens/MAE_pre.png "MAE por Modelo pré Justiça")
-![RMSE por Modelo pré Justiça](./metrica_Imagens/RMSE_pre.png "RMSE por Modelo pré Justiça")
-![sMAPE por Modelo pré Justiça](./metrica_Imagens/sMAPE_pre.png "sMAPE por Modelo pré Justiça")
+Comparing models, LightGBM made less errors than baseline, as shown by all
+metrics. Between LightGBM models, leaked LightGBM was better in all metrics,
+as expected, since it contains extra data that others don't have (and in a real
+world scenario, it wouldn't exist), while LightGBM with Fairness was a mesh of
+better and worse performance
 
-## 4: Conclusão
-
-  Após a análise dos resultados obtidos, percebe-se que o modelo LightGBM
-entregou respostas melhores, mais próximas da realidade, enquanto o modelo
-base apresentou um comportamento menos assertivo.
-
-  No entanto, ambos apresentaram um comportamento parecido: erros graves acompanhado
-de alguns acertos. Os erros graves podem ser analisados pelas métricas sMAPE e RMSE,
-que revelaram uma alta taxa de predições longe da realidade.
-Os poucos acertos, nesse caso aparecem pela métrica MAE, que apresentou uma
-média baixa de erros. Provavelmente, os erros leves reduziram o valor da média,
-compensando os grandes erros apresentados.
-
-  Devido à alta taxa de erros graves, nota-se então que os modelos não
-apresentaram respostas consistentes, com baixa acurácia.
-Em sua forma atual, eles não poderia ser usados de forma
-profissional em hospitais, pois suas predições poderiam resultar em
-decisões que não se aproximam da realidade, colocando a vida de
-pacientes em risco.
-
-  Por último, vale ressaltar que a implementação de algoritmos para mitigação de
-viés podem e tendem a levar a resultados globais levemente piores.
+However, all models behaved in a similar way: highly inconsistent predictions,
+with many large errors and some small. This conclusion comes from a mixture of
+analysis of each metric. Both SMAPE and RMSE reveal a tendency to make bad
+predictions, with values far from the real values. On the other hand, MAE
+shows that the average mistake is low, which means there are close predictions
+to balance the further ones.
